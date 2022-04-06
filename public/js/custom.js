@@ -161,4 +161,21 @@ $(document).ready(function()
 		});
 	});
 
+	$("#registerForm").submit(function(e){
+		e.preventDefault();
+		$.ajax({
+			url: 'registration',
+			type: 'post',
+			data: $("#registerForm").serialize(),
+			success: function(data){
+				if (data.success) {
+					$("#register_error").html("<div class='alert alert-success' role='alert'>Registration Successful</div>").delay(2000).fadeOut('slow');					
+					setTimeout(function() { $('#registerModal').modal('hide'); }, 5000);
+				}else{
+					$("#register_error").html("<div class='alert alert-danger' role='alert'>Something went wrong</div>");					
+				}
+			}
+		});
+	});
+
 });

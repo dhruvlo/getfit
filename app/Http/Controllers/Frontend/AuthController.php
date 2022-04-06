@@ -10,43 +10,6 @@ use Auth;
 
 class AuthController extends Controller
 {
-
-    // public function customLogin(Request $request)
-    // {
-    //     $request->validate([
-    //         'loginEmail' => 'required',
-    //         'loginPassword' => 'required',
-    //     ]);
-   
-    //     $credentials = [
-    //         'email' => $request->loginEmail,
-    //         'password' => $request->loginPassword,
-    //     ];
-
-    //     if (Auth::attempt($credentials)) {
-    //         $user = Auth::user()->type;
-            
-    //         switch ($user) {
-
-    //             case "admin":
-    //                 return redirect()->route('admin_dashboard');
-    //                 break;
-    //             case "user":
-    //                 return redirect()->intended('dashboard'); 
-    //                 break;
-    //             case "trainer":
-    //                 return redirect()->route('trainer_dashboard');  
-    //                 break;
-    //             default:
-    //                 abort(404);
-    //         }
-    //         abort(404);
-    //     } else{
-    //         abort(404);
-    //     }
-    // }
-
-
     public function customLogin(Request $request){
     if($request->ajax()){
             $request->validate([
@@ -70,17 +33,23 @@ class AuthController extends Controller
 
     public function customRegistration(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required',
-            'password' => 'required|min:6',
-        ]);
-           
-        $data = $request->all();
-        $check = $this->create($data);
-        
-        return redirect()->route('home');
+        if($request->ajax()){
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email|unique:users',
+                'phone' => 'required',
+                'password' => 'required|min:6',
+            ]);
+               
+            $data = $request->all();
+            $check = $this->create($data);
+
+            if ($check) {
+                return response()->json(['success'=>true]);
+            }else{
+                return response()->json(['success'=>false]);
+            }
+        }
     }
 
     public function create(array $data)

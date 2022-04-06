@@ -39,7 +39,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="{{ route('register.custom')}}">
+        <form id="registerForm">
+          <div id="register_error"></div>
           @csrf
           <div class="form-group">
             <input type="text" name="name" class="form-control" placeholder="Name" required>
