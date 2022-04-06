@@ -9,7 +9,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" action="{{ route('login.custom')}}">
+        <div id="login_error">
+        </div>
+        <form method="post" action="{{ route('login.custom')}}" id="loginForm">
           @csrf
           <div class="form-group">
             <input type="email" class="form-control" name="loginEmail" aria-describedby="emailHelp" placeholder="Email" required>

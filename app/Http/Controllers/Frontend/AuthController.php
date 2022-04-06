@@ -11,39 +11,60 @@ use Auth;
 class AuthController extends Controller
 {
 
-    public function customLogin(Request $request)
-    {
-        $request->validate([
-            'loginEmail' => 'required',
-            'loginPassword' => 'required',
-        ]);
+    // public function customLogin(Request $request)
+    // {
+    //     $request->validate([
+    //         'loginEmail' => 'required',
+    //         'loginPassword' => 'required',
+    //     ]);
    
-        $credentials = [
-            'email' => $request->loginEmail,
-            'password' => $request->loginPassword,
-        ];
+    //     $credentials = [
+    //         'email' => $request->loginEmail,
+    //         'password' => $request->loginPassword,
+    //     ];
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user()->type;
+    //     if (Auth::attempt($credentials)) {
+    //         $user = Auth::user()->type;
             
-            switch ($user) {
+    //         switch ($user) {
 
-                case "admin":
-                    return redirect()->route('admin_dashboard');
-                    break;
-                case "user":
-                    return redirect()->intended('dashboard'); 
-                    break;
-                case "trainer":
-                    return redirect()->route('trainer_dashboard');  
-                    break;
-                default:
-                    abort(404);
+    //             case "admin":
+    //                 return redirect()->route('admin_dashboard');
+    //                 break;
+    //             case "user":
+    //                 return redirect()->intended('dashboard'); 
+    //                 break;
+    //             case "trainer":
+    //                 return redirect()->route('trainer_dashboard');  
+    //                 break;
+    //             default:
+    //                 abort(404);
+    //         }
+    //         abort(404);
+    //     } else{
+    //         abort(404);
+    //     }
+    // }
+
+
+    public function customLogin(Request $request){
+    if($request->ajax()){
+            $request->validate([
+                'loginEmail' => 'required',
+                'loginPassword' => 'required',
+            ]);
+    
+            $credentials = [
+                'email' => $request->loginEmail,
+                'password' => $request->loginPassword,
+            ];
+
+            if (Auth::attempt($credentials)) {
+                $user_type = Auth::user()->type;
+                return response()->json(['success'=>true,'user_type'=>$user_type]);
+            }else{
+                return response()->json(['success'=>false]);
             }
-            abort(404);
-        }
-        else{
-            abort(404);
         }
     }
 

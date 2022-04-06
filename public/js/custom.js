@@ -15,7 +15,6 @@
 
 $(document).ready(function()
 {
-	"use strict";
 
 	/* 
 
@@ -137,5 +136,29 @@ $(document).ready(function()
 			});
 		}
 	}
+
+	$("#loginForm").submit(function(e){
+		e.preventDefault();
+		var actionurl = e.currentTarget.action;
+		$.ajax({
+			url: actionurl,
+			type: 'post',
+			data: $("#loginForm").serialize(),
+			success: function(data){
+				if(data.success){
+					var user_type = data.user_type;
+					if(user_type == "admin"){
+						window.location.href =  $(location).attr('href')+"admin";
+					} else if(user_type == "trainer"){
+						window.location.href =  $(location).attr('href')+"trainer";
+					} else if(user_type == "user"){
+						window.location.href =  $(location).attr('href')+"dashboard";
+					}
+				}else{
+					$("#login_error").html("<div class='alert alert-danger' role='alert'>Credentials are not correct</div>");					
+				}
+			}
+		});
+	});
 
 });
