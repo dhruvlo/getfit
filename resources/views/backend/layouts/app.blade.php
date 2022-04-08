@@ -66,7 +66,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('add_user_trainer') }}" >
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-fw fa-plus"></i>
                     <span>New Trainer</span>
                 </a>
             </li>
@@ -90,6 +90,14 @@
                 <a class="nav-link collapsed" href="{{ route('contact_page')}}" >
                     <i class="fas fa-fw fa-users"></i>
                     <span>Contact Form Leads</span>
+                </a>
+            </li>
+            
+             <!-- Nav Item - Pages Collapse Menu -->
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('show.assignTrainer')}}" >
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Assign Trainer To User</span>
                 </a>
             </li>
 
@@ -129,9 +137,9 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#}" >
+                <a class="nav-link collapsed" href="{{ route('user_plan')}}" >
                     <i class="fas fa-fw fa-list"></i>
-                    <span>Plans</span>
+                    <span>Plan</span>
                 </a>
             </li>
 
@@ -321,6 +329,7 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ URL::asset('back/vendor/jquery/jquery.min.js')}}"></script>
+    @yield('script')
     <script src="{{ URL::asset('back/js/custom.js')}}"></script>
     <script src="{{ URL::asset('back/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 

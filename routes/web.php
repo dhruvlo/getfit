@@ -50,6 +50,10 @@ Route::get('dashboard',[Backend\UserController::class,'dashboard'])->name('dashb
 
 Route::get('/payment',[Backend\UserController::class,'payment'])->name('user_payment');
 
+Route::get('/plan',[Backend\UserController::class,'plan'])->name('user_plan');
+
+Route::post('/add-user-plan',[Backend\UserController::class,'addPlan'])->name('add_user_plan');
+
 });
 
 
@@ -87,5 +91,9 @@ route::get('plans',[Backend\PlansController::class,'index'])->name('plans');
 Route::post('/add-plan',[Backend\PlansController::class,'addPlan'])->name('add_plan');
 
 Route::delete('/remove-plan/{id}',[Backend\PlansController::class,'destroyPlan'])->name('plan_delete');
+
+Route::get('/assign-trainer',[Backend\TrainerController::class,'showAssignTrainer'])->name('show.assignTrainer');
+
+Route::post('/add-assign-trainer',[Backend\TrainerController::class,'addAssignTrainer'])->name('addAssignTrainer');
 
 });

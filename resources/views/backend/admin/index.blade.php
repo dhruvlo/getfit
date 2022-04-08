@@ -89,4 +89,12 @@ Dashboard
     </div>
 </div>
 </div>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="text-danger text-uppercase">
+        <a href="{{ route('show.assignTrainer')}}" class="btn btn-success">Assign Trainer to User</a>
+        </div>
+    </div>
+</div>
 @stop
