@@ -150,7 +150,7 @@ $(document).ready(function()
 					if(user_type == "admin"){
 						window.location.href =  $(location).attr('href')+"admin";
 					} else if(user_type == "trainer"){
-						window.location.href =  $(location).attr('href')+"trainer";
+						window.location.href =  $(location).attr('href')+"trainer/dashboard";
 					} else if(user_type == "user"){
 						window.location.href =  $(location).attr('href')+"dashboard";
 					}

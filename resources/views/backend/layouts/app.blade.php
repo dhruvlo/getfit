@@ -42,7 +42,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item {{ (request()->is('admin')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin_dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -57,28 +57,28 @@
             </div> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('admin/plans')) ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="{{ route('plans') }}" >
                     <i class="fas fa-fw fa-tree"></i>
                     <span>Plans</span>
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('admin/add-trainer')) ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="{{ route('add_user_trainer') }}" >
                     <i class="fas fa-fw fa-plus"></i>
                     <span>New Trainer</span>
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('admin/trainers')) ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="{{ route('admin_trainers') }}" >
                     <i class="fas fa-fw fa-user"></i>
                     <span>Trainers</span>
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('admin/users')) ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="{{ route('admin_users')}}" >
                     <i class="fas fa-fw fa-users"></i>
                     <span>Users</span>
@@ -86,7 +86,7 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('admin/contact-data')) ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="{{ route('contact_page')}}" >
                     <i class="fas fa-fw fa-users"></i>
                     <span>Contact Form Leads</span>
@@ -94,7 +94,7 @@
             </li>
             
              <!-- Nav Item - Pages Collapse Menu -->
-             <li class="nav-item">
+             <li class="nav-item {{ (request()->is('admin/assign-trainer')) ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="{{ route('show.assignTrainer')}}" >
                     <i class="fas fa-fw fa-plus"></i>
                     <span>Assign Trainer To User</span>
@@ -121,7 +121,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item {{ (request()->is('dashboard')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -136,7 +136,7 @@
             </div> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('plan')) ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="{{ route('user_plan')}}" >
                     <i class="fas fa-fw fa-list"></i>
                     <span>Plan</span>
@@ -144,7 +144,7 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('payment')) ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="{{ route('user_payment')}}" >
                     <i class="fas fa-fw fa-credit-card"></i>
                     <span>Payment</span>
@@ -171,8 +171,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('admin_dashboard') }}">
+            <li class="nav-item {{ (request()->is('trainer/dashboard')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('trainer_dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -186,8 +186,8 @@
             </div> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin_users')}}" >
+            <li class="nav-item {{ (request()->is('trainer/my-clients')) ? 'active' : '' }}">
+                <a class="nav-link collapsed" href="{{ route('clients')}}" >
                     <i class="fas fa-fw fa-users"></i>
                     <span>Clients</span>
                 </a>

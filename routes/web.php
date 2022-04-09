@@ -61,7 +61,9 @@ Route::post('/add-user-plan',[Backend\UserController::class,'addPlan'])->name('a
 //Trainer Protected Routes
 Route::group(['middleware' => ['auth','trainer'], 'prefix' => 'trainer'], function () {
 
-Route::get('/',[Backend\TrainerController::class,'index'])->name('trainer_dashboard');
+Route::get('/dashboard',[Backend\TrainerController::class,'index'])->name('trainer_dashboard');
+
+Route::get('/my-clients',[Backend\TrainerController::class,'showClients'])->name('clients');
 
 });
 

@@ -10,7 +10,13 @@ use App\Models\UserTrainer;
 class TrainerController extends Controller
 {
     public function index(){
-        return view('backend.trainer.index');
+        $totalusers = UserTrainer::join('users','users.id','=','user_trainers.user_id')
+                                ->leftjoin('user_plans','user_plans.user_id','=','users.id')
+                                ->leftjoin('plans','plans.id','=','user_plans.plan_id')
+                                ->select('users.id','users.name','users.email','user_plans.plan_id','plans.duration','plans.price','user_plans.created_at')
+                                ->where('user_trainers.trainer_id',auth()->user()->id)
+                                ->get()->count();
+        return view('backend.trainer.index',compact('totalusers'));
     }
 
     public function showAssignTrainer(){
@@ -47,5 +53,15 @@ class TrainerController extends Controller
                 return response()->json(['success'=>false]);
             }
         }
+    }
+
+    public function showClients(Request $request){
+        $myClients = UserTrainer::join('users','users.id','=','user_trainers.user_id')
+                                ->leftjoin('user_plans','user_plans.user_id','=','users.id')
+                                ->leftjoin('plans','plans.id','=','user_plans.plan_id')
+                                ->select('users.id','users.name','users.email','user_plans.plan_id','plans.duration','plans.price','user_plans.created_at')
+                                ->where('user_trainers.trainer_id',auth()->user()->id)
+                                ->get();
+        return view('backend.trainer.clients',compact('myClients'));
     }
 }
