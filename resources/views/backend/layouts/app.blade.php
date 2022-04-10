@@ -20,7 +20,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ URL::asset('back/css/sb-admin-2.min.css')}}" rel="stylesheet">
-     <!-- <link href="{{ URL::asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"> -->
+    <link href="{{ URL::asset('back/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -338,13 +338,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ URL::asset('back/js/sb-admin-2.min.js') }}"></script>
-
-    <!-- Page level plugins -->
-    <script src="back/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="back/js/demo/chart-area-demo.js"></script>
-    <script src="back/js/demo/chart-pie-demo.js"></script>
 
     <!-- Page level plugins -->
     <script src="{{ URL::asset('back/vendor/datatables/jquery.dataTables.min.js')}}"></script>

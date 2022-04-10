@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\contact;
+use App\Models\Plan;
 use Hash;
 use Auth;
 
@@ -13,9 +14,15 @@ class AdminController extends Controller
 {
     //Admin Dashboard
     public function index(){
+        
+        $totalearning = Plan::leftjoin('user_plans','user_plans.plan_id','=','plans.id')
+                    ->select('user_plans.plan_id','plans.price')
+                    ->where('user_plans.plan_id','!=',null)
+                    ->sum('plans.price');
+
         $user_count = User::where('type','user')->count();
         $trainer_count = User::where('type','trainer')->count();
-        return view('backend.admin.index',compact(['user_count','trainer_count']));
+        return view('backend.admin.index',compact(['user_count','trainer_count','totalearning']));
     }
 
     //Show users list
