@@ -36,7 +36,9 @@ Plans
         </table>
     </div>
 </div>
+
 @else
+
 <div id="plan_alert">
 </div>
 
@@ -101,7 +103,8 @@ $( document ).ready(function() {
             success: function(data){
                 if(data.success){
                     $('#user_plan')[0].reset();
-                    $("#plan_alert").html("<div class='alert alert-success mt-4' role='alert'>Plan Added Successfully</div>").delay(5000).fadeOut('slow');
+                    $("#plan_alert").html("<div class='alert alert-success mt-4' role='alert'>Plan Added Successfully</div>").delay(2000).fadeOut('slow');
+                    setTimeout(function() { window.location.href =  window.location.origin+"/payment"; }, 3000);
                 }else{
                     $("#plan_alert").html("<div class='alert alert-danger mt-4' role='alert'>Something went wrong</div>").delay(5000).fadeOut('slow');   
                 }
